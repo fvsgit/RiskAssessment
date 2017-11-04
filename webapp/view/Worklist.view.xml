@@ -1,0 +1,28 @@
+<mvc:View controllerName="riskassessment.controller.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic">
+	<semantic:DetailPage id="page" title="{i18n>worklistTitle}">
+		<semantic:content>
+			<List items="{main>/Assessments}">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="Risks" level="H2"/>
+						<ToolbarSpacer/>
+						<Button id="btnAdd" icon="sap-icon://add" press="onPress_btnAdd" text="Add New"/>
+					</Toolbar>
+				</headerToolbar>
+				<items>
+					<ObjectListItem title="{main>Name}" type="Active" press="onPress">
+						<firstStatus>
+							<ObjectStatus text="{main>Status}%" state="{= ${main>Status} === 100 ? 'Success' : ${main>Status} &lt;= 25 ? 'Error' : 'Warning' }"/>
+						</firstStatus>
+						<attributes>
+							<ObjectAttribute text="{main>Description}"/>
+						</attributes>
+					</ObjectListItem>
+				</items>
+			</List>
+		</semantic:content>
+		<semantic:positiveAction>
+			<semantic:PositiveAction id="btnSubmit" text="Submit" press="onPress_btnSubmit"/>
+		</semantic:positiveAction>
+	</semantic:DetailPage>
+</mvc:View>

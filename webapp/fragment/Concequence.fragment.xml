@@ -1,0 +1,5 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog noDataText="No Data" title="Select Concequence" search="handleSearch" confirm="handleClose" items="{main>/Concequence}">
+		<StandardListItem title="{main>Title}" description="{main>Description}" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition>
