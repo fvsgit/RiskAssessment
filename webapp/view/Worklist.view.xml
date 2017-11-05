@@ -10,9 +10,10 @@
 					</Toolbar>
 				</headerToolbar>
 				<items>
-					<ObjectListItem title="{main>Name}" type="Active" press="onPress">
+					<ObjectListItem title="{main>Name}" type="Active" press="onPress" number="{main>Score}" numberUnit="{main>ScoreText}"
+						numberState="{= ${main>Score} &lt; 6 ? 'Success' : ${main>Score} &gt; 5 &amp;&amp; ${main>Score} &lt; 13 ? 'Warning' : 'Error' }">
 						<firstStatus>
-							<ObjectStatus text="{main>Status}%" state="{= ${main>Status} === 100 ? 'Success' : ${main>Status} &lt;= 25 ? 'Error' : 'Warning' }"/>
+							<ObjectStatus text="Signed by manager" state="Success" visible="{= ${main>ManagerSignature} !== '' }" icon="sap-icon://accept"/>
 						</firstStatus>
 						<attributes>
 							<ObjectAttribute text="{main>Description}"/>

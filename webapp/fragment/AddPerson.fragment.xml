@@ -6,13 +6,13 @@
 				singleContainerFullSize="false">
 				<f:content>
 					<Label text="First Name" required="true"/>
-					<Input value="{NewPersonModel>/FirstName}"></Input>
+					<Input value="{NewPersonModel>/FirstName}" fieldGroupIds="addPersonGroup" required="true" valueStateText="First name is required"></Input>
 					<Label text="Last Name" required="true"/>
-					<Input value="{NewPersonModel>/LastName}"></Input>
+					<Input value="{NewPersonModel>/LastName}" fieldGroupIds="addPersonGroup" required="true" valueStateText="Last name is required"></Input>
 					<Label text="Job Title"/>
 					<Input value="{NewPersonModel>/JobTitle}"></Input>
 					<Label text="Signature" required="true"/>
-					<Panel visible="true" width="100%" height="200px" backgroundDesign="Solid"></Panel>
+					<TextArea rows="4" value="" fieldGroupIds="addPersonGroup" required="true" valueStateText="A signature is required"></TextArea>
 				</f:content>
 			</f:SimpleForm>
 		</content>
@@ -20,7 +20,7 @@
 			<Button text="Add" press="onPress_PersonAddClose"></Button>
 		</beginButton>
 		<endButton>
-			<Button text="Cancel" press="onPress_PersonAddClose"></Button>
+			<Button text="Cancel" press="onPress_PersonAddCancel"></Button>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

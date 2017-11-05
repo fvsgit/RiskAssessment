@@ -1,13 +1,14 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="riskassessment.controller.New"
-	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:semantic="sap.m.semantic" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:semantic="sap.m.semantic" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<semantic:DetailPage id="page" title="New Risk" showNavButton="true" navButtonPress="onNavBack">
 		<semantic:content>
 			<f:SimpleForm id="SimpleFormChange354" editable="true" layout="ResponsiveGridLayout" title="General" labelSpanXL="3" labelSpanL="3"
 				labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
 				columnsL="1" columnsM="1" singleContainerFullSize="false">
 				<f:content>
-					<Label text="Name" required="true"/>
-					<Input value="{NewModel>/NewEntry/Name}"/>
+					<Label text="Title" required="true"/>
+					<Input value="{NewModel>/NewEntry/Name}" fieldGroupIds="mainGroup" required="true" valueStateText="Title is required"/>
 					<Label text="Description"/>
 					<Input value="{NewModel>/NewEntry/Description}"></Input>
 				</f:content>
@@ -18,12 +19,12 @@
 				<f:content>
 					<Label text="Likelihood" required="true"/>
 					<HBox>
-						<Input value="{NewModel>/NewEntry/Likelihood}" editable="false"></Input>
+						<Input value="{NewModel>/NewEntry/Likelihood}" enabled="false" fieldGroupIds="mainGroup" required="true" valueStateText="Select the likelihood"></Input>
 						<Button id="btnSelectLikelihood" text="Select" press="onPress_SelectDialog"></Button>
 					</HBox>
 					<Label text="Consequence" required="true"/>
 					<HBox>
-						<Input value="{NewModel>/NewEntry/Concequence}" editable="false"></Input>
+						<Input value="{NewModel>/NewEntry/Concequence}" enabled="false" fieldGroupIds="mainGroup" required="true" valueStateText="Select the concequence"></Input>
 						<Button id="btnSelectConcequence" text="Select" press="onPress_SelectDialog"></Button>
 					</HBox>
 					<Label text="Score" required="true" visible="{= ${NewModel>/NewEntry/Score} > 0 }"/>
@@ -31,14 +32,15 @@
 						text="{NewModel>/NewEntry/Score} - {NewModel>/NewEntry/ScoreText}" state="{NewModel>/NewEntry/ScoreState}"
 						icon="{= ${NewModel>/NewEntry/ScoreState} === 'Error' ? 'sap-icon://error' : ${NewModel>/NewEntry/ScoreState} === 'Warning' ? 'sap-icon://message-warning' : 'sap-icon://message-success' }"/>
 					<Label text="Manager Signature" required="true" visible="{= ${NewModel>/NewEntry/Score} >= 18 }"/>
-					<TextArea rows="4" visible="{= ${NewModel>/NewEntry/Score} >= 18 }"></TextArea>
+					<TextArea rows="4" visible="{= ${NewModel>/NewEntry/Score} >= 18 }" value="{NewModel>/NewEntry/ManagerSignature}" fieldGroupIds="mainGroup" required="true" valueStateText="Please add the manager's signature"></TextArea>
 				</f:content>
 			</f:SimpleForm>
 			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Involved Parties" labelSpanXL="3" labelSpanL="3" labelSpanM="3"
 				labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
 				singleContainerFullSize="false">
 				<f:content>
-					<List id="lstInvolvedParties" mode="Delete" items="{main>/InvolvedParties}" delete="onDelete_lstInvolvedParties">
+					<List id="lstInvolvedParties" mode="Delete" items="{NewModel>/NewEntry/Parties}" delete="onDelete_lstInvolvedParties"
+					customData:validationMethod="minRows" customData:minRows="1" validationSuccess="onListValidationSuccess" validationError="onListValidationError">
 						<headerToolbar>
 							<Toolbar>
 								<ToolbarSpacer/>
@@ -48,10 +50,10 @@
 						<items>
 							<CustomListItem>
 								<HBox>
-									<core:Icon size="2rem" src="{main>Signature}" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
+									<core:Icon size="2rem" src="sap-icon://signature" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
 									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
-										<Label text="{main>FirstName} {main>LastName}"></Label>
-										<Label text="{main>JobTitle}"/>
+										<Label text="{NewModel>FirstName} {NewModel>LastName}"></Label>
+										<Label text="{NewModel>JobTitle}"/>
 									</VBox>
 								</HBox>
 							</CustomListItem>

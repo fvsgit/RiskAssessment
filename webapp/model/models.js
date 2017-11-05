@@ -17,18 +17,42 @@ sap.ui.define([
 				"Assessments": [{
 					"Id": "1",
 					"Name": "Electrical Risk",
-					"Description": "Some wires are not isulated",
-					"Status": 24
+					"Description": "Some wires are not isulated", 
+					"Likelihood": "",
+					"LikelihoodKey": "",
+					"Concequence": "",
+					"ConcequenceKey": "",
+					"Score": 5,
+					"ScoreText": "Low",
+					"ScoreState": "None",
+					"ManagerSignature": "",
+					"Parties": [] 
 				}, {
 					"Id": "2",
 					"Name": "Cemical hazard",
 					"Description": "Leaks detected",
-					"Status": 71
+					"Likelihood": "",
+					"LikelihoodKey": "",
+					"Concequence": "",
+					"ConcequenceKey": "",
+					"Score": 12,
+					"ScoreText": "Medium",
+					"ScoreState": "None",
+					"ManagerSignature": "",
+					"Parties": [] 
 				}, {
 					"Id": "3",
 					"Name": "Water leaks",
 					"Description": "N/A",
-					"Status": 100
+					"Likelihood": "",
+					"LikelihoodKey": "",
+					"Concequence": "",
+					"ConcequenceKey": "",
+					"Score": 18,
+					"ScoreText": "Significant",
+					"ScoreState": "None",
+					"ManagerSignature": "aaaa",
+					"Parties": [] 
 				}],
 				"Likelihood": [{
 					"Id": "1",
@@ -197,8 +221,7 @@ sap.ui.define([
 					"Score": 25,
 					"ScoreText": "High",
 					"State": "Error"
-				}],
-				"InvolvedParties": []
+				}]
 			});
 			oModel.setDefaultBindingMode("TwoWay");
 			return oModel;

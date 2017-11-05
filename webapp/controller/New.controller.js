@@ -2,8 +2,9 @@ sap.ui.define([
 	"riskassessment/controller/BaseController",
 	"sap/ui/model/Filter",
 	"sap/m/MessageToast",
-	"sap/ui/model/json/JSONModel"
-], function(BaseController, Filter, MessageToast, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/m/MessageBox"
+], function(BaseController, Filter, MessageToast, JSONModel, MessageBox) {
 	"use strict";
 
 	return BaseController.extend("riskassessment.controller.New", {
@@ -22,8 +23,7 @@ sap.ui.define([
 				"NewEntry": {
 					"Id": sNewId,
 					"Name": "",
-					"Description": "",
-					"Status": 0,
+					"Description": "", 
 					"Likelihood": "",
 					"LikelihoodKey": "",
 					"Concequence": "",
@@ -31,6 +31,7 @@ sap.ui.define([
 					"Score": 0,
 					"ScoreText": "",
 					"ScoreState": "None",
+					"ManagerSignature": "",
 					"Parties": []
 				}
 			});
@@ -42,12 +43,16 @@ sap.ui.define([
 		},
 		onPress_btnSave: function() {
 
-			var oNewEntry = this.getView().getModel("NewModel").getProperty("/NewEntry");
-			var oModel = this.getView().getModel("main");
-			var aAssessments = oModel.getProperty("/Assessments");
-			aAssessments.push(oNewEntry);
-			oModel.setProperty("/Assessments", aAssessments);
-			history.go(-1);
+			if (this.validateInputData()) {
+				if (this.validateList()) {
+					var oNewEntry = this.getView().getModel("NewModel").getProperty("/NewEntry");
+					var oModel = this.getView().getModel("main");
+					var aAssessments = oModel.getProperty("/Assessments");
+					aAssessments.push(oNewEntry);
+					oModel.setProperty("/Assessments", aAssessments);
+					history.go(-1);
+				}
+			}
 		},
 		onPress_btnCancel: function() {
 			history.go(-1);
@@ -140,28 +145,61 @@ sap.ui.define([
 					}
 				}
 			}
+
+			this.validateInputData();
 		},
 		onPress_PersonAddClose: function() {
-			this._oDialog.close();
-			var oDialog = this._oDialog;
-			var aCustomData = oDialog.getCustomData();
-			var sKey = aCustomData[0].getKey();
-			var sValue = aCustomData[0].getValue();
 
-			if (sKey === "entity" && sValue === "AddPerson") {
-				var oNewPerson = this.getView().getModel("NewPersonModel").getData();
-				var aInvolvedParties = this.getView().getModel("main").getProperty("/InvolvedParties");
-				aInvolvedParties.push(oNewPerson);
-				this.getView().getModel("main").setProperty("/InvolvedParties", aInvolvedParties);
+			if (this.validate("addPersonGroup")) {
+
+				this._oDialog.close();
+				var oDialog = this._oDialog;
+				var aCustomData = oDialog.getCustomData();
+				var sKey = aCustomData[0].getKey();
+				var sValue = aCustomData[0].getValue();
+
+				if (sKey === "entity" && sValue === "AddPerson") {
+					var oNewPerson = this.getView().getModel("NewPersonModel").getData();
+					var aInvolvedParties = this.getView().getModel("NewModel").getProperty("/NewEntry/Parties");
+					aInvolvedParties.push(oNewPerson);
+					this.getView().getModel("NewModel").setProperty("/NewEntry/Parties", aInvolvedParties);
+				}
+
+				this.validateInputData();
+				this.validateList();
 			}
+		},
+		onPress_PersonAddCancel: function(){
+			this._oDialog.close();
 		},
 		onDelete_lstInvolvedParties: function(oEvent) {
 			var oList = oEvent.getSource();
 			var oItem = oEvent.getParameter("listItem");
-			var iIndex = oItem.getBindingContextPath().replace("/InvolvedParties/","");
+			var iIndex = oItem.getBindingContextPath().replace("/InvolvedParties/", "");
 			var aInvolvedParties = this.getView().getModel("main").getProperty("/InvolvedParties");
 			aInvolvedParties.splice(iIndex, 1);
 			this.getView().getModel("main").setProperty("/InvolvedParties", aInvolvedParties);
+		},
+
+		validateInputData: function() {
+
+			if (this.validate("mainGroup")) {
+				return true;
+			} else {
+				return false;
+			}
+		},
+
+		validateList: function() {
+			return this.validate(this.getView().byId("lstInvolvedParties"));
+		},
+
+		onListValidationError: function(oEvent) {
+			oEvent.getSource().addStyleClass("listError");
+			MessageBox.error("Al least one involved person must be added");
+		},
+		onListValidationSuccess: function(oEvent) {
+			oEvent.getSource().removeStyleClass("listError");
 		}
 
 	});
