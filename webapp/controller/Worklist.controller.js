@@ -57,29 +57,31 @@ sap.ui.define([
 		 * @private
 		 */
 		_showObject: function(sId) {
-			this.getRouter().navTo("object", {
-				objectId: sId
+			this.getRouter().navTo("new", {
+				Id: sId
 			});
 		},
 
 		onPress_btnSubmit: function() { 
-			var aRisks = this.getView().getModel("main").getProperty("/Assessments");
-			var aCount = 0;
-			for (var i = 0; i < aRisks.length; i++) {
-				if (aRisks[i].Status === 100) {
-					aCount++;
-				}
-			}
+			// var aRisks = this.getView().getModel("main").getProperty("/Assessments");
+			// var aCount = 0;
+			// for (var i = 0; i < aRisks.length; i++) {
+			// 	if (aRisks[i].Status === 100) {
+			// 		aCount++;
+			// 	}
+			// }
 
-			if (aCount === aRisks.length) {
+			// if (aCount === aRisks.length) {
 				MessageBox.success("The risk assessment has been submitted");
-			} else {
-				MessageBox.error("All risks must be 100% completed before submitting can be done");
-			}
+			// } else {
+			// 	MessageBox.error("All risks must be 100% completed before submitting can be done");
+			// }
 		},
 
 		onPress_btnAdd: function() {
-			this.getRouter().navTo("new");
+			this.getRouter().navTo("new", {
+				Id: "none"
+			});
 		}
 
 	});

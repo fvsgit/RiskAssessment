@@ -101,7 +101,7 @@
 					"worklist"
 				]
 			}, {
-				"pattern": "New",
+				"pattern": "New/{Id}",
 				"name": "new",
 				"target": [
 					"new"

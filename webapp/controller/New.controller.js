@@ -15,15 +15,15 @@ sap.ui.define([
 
 		_onObjectMatched: function(oEvent) {
 
+			var sId = oEvent.getParameter("arguments").Id;
 			var oModel = this.getView().getModel("main");
 			var aAssessments = oModel.getProperty("/Assessments");
-			var sNewId = (aAssessments.length + 1).toString();
 
 			var oNewModel = new JSONModel({
 				"NewEntry": {
-					"Id": sNewId,
+					"Id": "",
 					"Name": "",
-					"Description": "", 
+					"Description": "",
 					"Likelihood": "",
 					"LikelihoodKey": "",
 					"Concequence": "",
@@ -32,10 +32,25 @@ sap.ui.define([
 					"ScoreText": "",
 					"ScoreState": "None",
 					"ManagerSignature": "",
-					"Parties": []
+					"Parties": [],
+					"Mode": ""
 				}
 			});
 			this.getView().setModel(oNewModel, "NewModel");
+
+			if (sId === "none") {
+				var sNewId = (aAssessments.length + 1).toString();
+				this.getView().getModel("NewModel").setProperty("/NewEntry/Id", sNewId);
+				this.getView().getModel("NewModel").setProperty("/NewEntry/Mode", "Create");
+			} else {
+				for (var i = 0; i < aAssessments.length; i++) {
+					if (aAssessments[i].Id === sId) {
+						this.getView().getModel("NewModel").setProperty("/NewEntry", aAssessments[i]);
+						this.getView().getModel("NewModel").setProperty("/NewEntry/Mode", "Edit");
+						break;
+					}
+				}
+			}
 		},
 
 		onNavBack: function() {
@@ -45,11 +60,26 @@ sap.ui.define([
 
 			if (this.validateInputData()) {
 				if (this.validateList()) {
-					var oNewEntry = this.getView().getModel("NewModel").getProperty("/NewEntry");
-					var oModel = this.getView().getModel("main");
-					var aAssessments = oModel.getProperty("/Assessments");
-					aAssessments.push(oNewEntry);
-					oModel.setProperty("/Assessments", aAssessments);
+
+					var sMode = this.getView().getModel("NewModel").getProperty("/NewEntry/Mode");
+					if (sMode === "Create") {
+						var oNewEntry = this.getView().getModel("NewModel").getProperty("/NewEntry");
+						var oModel = this.getView().getModel("main");
+						var aAssessments = oModel.getProperty("/Assessments");
+						aAssessments.push(oNewEntry);
+						oModel.setProperty("/Assessments", aAssessments);
+					} else {
+						var oNewEntry = this.getView().getModel("NewModel").getProperty("/NewEntry");
+						var oModel = this.getView().getModel("main");
+						var aAssessments = oModel.getProperty("/Assessments");
+						for (var i = 0; i < aAssessments.length; i++) {
+							if (aAssessments[i].Id === oNewEntry.Id) {
+								oModel.setProperty("/Assessments/" + aAssessments[i].Id, oNewEntry);
+								break;
+							}
+						}
+						oModel.setProperty("/Assessments", aAssessments);
+					}
 					history.go(-1);
 				}
 			}
@@ -169,16 +199,16 @@ sap.ui.define([
 				this.validateList();
 			}
 		},
-		onPress_PersonAddCancel: function(){
+		onPress_PersonAddCancel: function() {
 			this._oDialog.close();
 		},
 		onDelete_lstInvolvedParties: function(oEvent) {
 			var oList = oEvent.getSource();
 			var oItem = oEvent.getParameter("listItem");
-			var iIndex = oItem.getBindingContextPath().replace("/InvolvedParties/", "");
-			var aInvolvedParties = this.getView().getModel("main").getProperty("/InvolvedParties");
+			var iIndex = oItem.getBindingContextPath().replace("/NewEntry/Parties/", "");
+			var aInvolvedParties = this.getView().getModel("NewModel").getProperty("/NewEntry/Parties");
 			aInvolvedParties.splice(iIndex, 1);
-			this.getView().getModel("main").setProperty("/InvolvedParties", aInvolvedParties);
+			this.getView().getModel("NewModel").setProperty("/NewEntry/Parties", aInvolvedParties);
 		},
 
 		validateInputData: function() {

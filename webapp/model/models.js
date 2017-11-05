@@ -17,42 +17,62 @@ sap.ui.define([
 				"Assessments": [{
 					"Id": "1",
 					"Name": "Electrical Risk",
-					"Description": "Some wires are not isulated", 
-					"Likelihood": "",
-					"LikelihoodKey": "",
-					"Concequence": "",
-					"ConcequenceKey": "",
+					"Description": "Some wires are not isulated",
+					"Likelihood": "Unlikely",
+					"LikelihoodKey": "2",
+					"Concequence": "Medium",
+					"ConcequenceKey": "2",
 					"Score": 5,
 					"ScoreText": "Low",
-					"ScoreState": "None",
+					"ScoreState": "Success",
 					"ManagerSignature": "",
-					"Parties": [] 
+					"Parties": [{
+						"FirstName": "Francois",
+						"LastName": "van Staden",
+						"JobTitle": "Temp 1",
+						"Signature": "sap-icon://signature"
+					}]
 				}, {
 					"Id": "2",
 					"Name": "Cemical hazard",
 					"Description": "Leaks detected",
-					"Likelihood": "",
-					"LikelihoodKey": "",
-					"Concequence": "",
-					"ConcequenceKey": "",
+					"Likelihood": "Likely",
+					"LikelihoodKey": "4",
+					"Concequence": "Medium",
+					"ConcequenceKey": "2",
 					"Score": 12,
 					"ScoreText": "Medium",
-					"ScoreState": "None",
+					"ScoreState": "Warning",
 					"ManagerSignature": "",
-					"Parties": [] 
+					"Parties": [{
+						"FirstName": "Felicia",
+						"LastName": "van Staden",
+						"JobTitle": "Temp 2",
+						"Signature": "sap-icon://signature"
+					}, {
+						"FirstName": "Marilena",
+						"LastName": "du Plessis",
+						"JobTitle": "Temp 3",
+						"Signature": "sap-icon://signature"
+					}]
 				}, {
 					"Id": "3",
 					"Name": "Water leaks",
 					"Description": "N/A",
-					"Likelihood": "",
-					"LikelihoodKey": "",
-					"Concequence": "",
-					"ConcequenceKey": "",
+					"Likelihood": "Possible",
+					"LikelihoodKey": "3",
+					"Concequence": "Disabling",
+					"ConcequenceKey": "4",
 					"Score": 18,
 					"ScoreText": "Significant",
-					"ScoreState": "None",
+					"ScoreState": "Error",
 					"ManagerSignature": "aaaa",
-					"Parties": [] 
+					"Parties": [{
+						"FirstName": "Marilena",
+						"LastName": "du Plessis",
+						"JobTitle": "Temp 3",
+						"Signature": "sap-icon://signature"
+					}]
 				}],
 				"Likelihood": [{
 					"Id": "1",
