@@ -27,9 +27,6 @@
     },
     "/webapp/view/Worklist.view.xml": {
       "entitySet": "Employees"
-    },
-    "/webapp/view/Object.view.xml": {
-      "entitySet": "Employees"
     }
   },
   "generation": [
