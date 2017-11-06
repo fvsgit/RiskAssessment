@@ -8,17 +8,7 @@
 		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
-		},
-		"dataSources": {
-			"mainService": {
-				"uri": "/Northwind/V2/northwind/northwind.svc/",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0",
-					"localUri": "localService/metadata.xml"
-				}
-			}
-		},
+		}, 
 		"sourceTemplate": {
 			"id": "sap.ui.ui5-template-plugin.1worklist",
 			"version": "1.42.0"
@@ -74,11 +64,7 @@
 				"settings": {
 					"bundleName": "riskassessment.i18n.i18n"
 				}
-			},
-			"": {
-				"dataSource": "mainService",
-				"preload": true
-			}
+			} 
 		},
 		"routing": {
 			"config": {
@@ -108,13 +94,6 @@
 					"target": [
 						"new"
 					]
-				},
-				{
-					"pattern": "Employees/{objectId}",
-					"name": "object",
-					"target": [
-						"object"
-					]
 				}
 			],
 			"targets": {
@@ -128,12 +107,6 @@
 					"viewName": "New",
 					"viewId": "new",
 					"viewLevel": 2
-				},
-				"object": {
-					"viewName": "Object",
-					"viewId": "object",
-					"viewLevel": 2,
-					"title": "{i18n>objectViewTitle}"
 				},
 				"objectNotFound": {
 					"viewName": "ObjectNotFound",

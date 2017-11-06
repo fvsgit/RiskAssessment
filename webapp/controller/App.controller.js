@@ -7,23 +7,13 @@ sap.ui.define([
 		return BaseController.extend("riskassessment.controller.App", {
 
 			onInit : function () {
-				var oViewModel,
-					fnSetAppNotBusy,
-					iOriginalBusyDelay = this.getView().getBusyIndicatorDelay();
+				var oViewModel;
 
 				oViewModel = new JSONModel({
-					busy : true,
+					busy : false,
 					delay : 0
 				});
-				this.setModel(oViewModel, "appView");
-
-				fnSetAppNotBusy = function() {
-					oViewModel.setProperty("/busy", false);
-					oViewModel.setProperty("/delay", iOriginalBusyDelay);
-				};
-
-				this.getOwnerComponent().getModel().metadataLoaded().
-					then(fnSetAppNotBusy);
+				this.setModel(oViewModel, "appView"); 
 
 				// apply content density mode to root view
 				this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
