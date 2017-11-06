@@ -8,7 +8,7 @@
 		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
-		}, 
+		},
 		"sourceTemplate": {
 			"id": "sap.ui.ui5-template-plugin.1worklist",
 			"version": "1.42.0"
@@ -64,7 +64,7 @@
 				"settings": {
 					"bundleName": "riskassessment.i18n.i18n"
 				}
-			} 
+			}
 		},
 		"routing": {
 			"config": {
@@ -80,22 +80,31 @@
 				},
 				"async": true
 			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "worklist",
-					"target": [
-						"worklist"
-					]
-				},
-				{
-					"pattern": "New/{Id}",
-					"name": "new",
-					"target": [
-						"new"
-					]
-				}
-			],
+			"routes": [{
+				"pattern": "",
+				"name": "worklist",
+				"target": [
+					"worklist"
+				]
+			}, {
+				"pattern": "New/{Id}",
+				"name": "new",
+				"target": [
+					"new"
+				]
+			}, {
+				"pattern": "selectInput",
+				"name": "selectInput",
+				"target": [
+					"selectInput"
+				]
+			}, {
+				"pattern": "addPerson",
+				"name": "addPerson",
+				"target": [
+					"addPerson"
+				]
+			}],
 			"targets": {
 				"worklist": {
 					"viewName": "Worklist",
@@ -106,6 +115,16 @@
 				"new": {
 					"viewName": "New",
 					"viewId": "new",
+					"viewLevel": 2
+				},
+				"selectInput": {
+					"viewName": "SelectInput",
+					"viewId": "selectInput",
+					"viewLevel": 2
+				}, 
+				"addPerson": {
+					"viewName": "AddPerson",
+					"viewId": "addPerson",
 					"viewLevel": 2
 				},
 				"objectNotFound": {

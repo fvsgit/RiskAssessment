@@ -11,7 +11,40 @@ sap.ui.define([
 			oModel.setDefaultBindingMode("OneWay");
 			return oModel;
 		},
-
+		createAppModel: function() {
+			var oModel = new JSONModel({
+				"Trigger": "",
+				"SelectInput": {
+					"Entity": "",
+					"Title": "",
+					"DestinationKey" : "",
+					"DestinationValue": ""
+				}
+			});
+			oModel.setDefaultBindingMode("TwoWay");
+			return oModel;
+		},
+		createNewEntryModel: function() {
+			var oModel = new JSONModel({
+				"NewEntry": {
+					"Id": "",
+					"Name": "",
+					"Description": "",
+					"Likelihood": "",
+					"LikelihoodKey": "",
+					"Concequence": "",
+					"ConcequenceKey": "",
+					"Score": 0,
+					"ScoreText": "",
+					"ScoreState": "None",
+					"ManagerSignature": "",
+					"Parties": [],
+					"Mode": ""
+				}
+			});
+			oModel.setDefaultBindingMode("TwoWay");
+			return oModel;
+		},
 		createMainModel: function() {
 			var oModel = new JSONModel({
 				"Assessments": [{

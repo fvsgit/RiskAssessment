@@ -1,0 +1,28 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="riskassessment.controller.AddPerson"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form">
+	<Page title="Add Person" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+				adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="First Name" required="true"/>
+					<Input value="{NewPersonModel>/FirstName}" fieldGroupIds="addPersonGroup" required="true" valueStateText="First name is required"></Input>
+					<Label text="Last Name" required="true"/>
+					<Input value="{NewPersonModel>/LastName}" fieldGroupIds="addPersonGroup" required="true" valueStateText="Last name is required"></Input>
+					<Label text="Job Title"/>
+					<Input value="{NewPersonModel>/JobTitle}"></Input>
+					<Label text="Signature" required="true"/>
+					<TextArea rows="4" value="" fieldGroupIds="addPersonGroup" required="true" valueStateText="A signature is required"></TextArea>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Add" press="onPress_btnAdd"></Button>
+				<Button text="Cancel" press="onPress_btnCancel"></Button>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>
