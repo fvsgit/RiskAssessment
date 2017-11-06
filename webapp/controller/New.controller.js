@@ -74,7 +74,7 @@ sap.ui.define([
 						var aAssessments = oModel.getProperty("/Assessments");
 						for (var i = 0; i < aAssessments.length; i++) {
 							if (aAssessments[i].Id === oNewEntry.Id) {
-								oModel.setProperty("/Assessments/" + aAssessments[i].Id, oNewEntry);
+								aAssessments[i] = oNewEntry;
 								break;
 							}
 						}

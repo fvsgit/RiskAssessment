@@ -12,7 +12,8 @@
     "excludedFiles": [
       "test.html"
     ],
-    "buildRequired": true
+    "buildRequired": true,
+    "lastBuildDateTime": "Sun, 05 Nov 2017 13:36:19 GMT"
   },
   "dataBinding": {
     "/webapp/view/App.view.xml": {
@@ -68,5 +69,10 @@
     "notifyBeforePushLevel": "Error",
     "blockPush": false,
     "blockPushLevel": "Error"
+  },
+  "hcpdeploy": {
+    "account": "s0006519309trial",
+    "name": "riskassessment",
+    "lastVersionWeTriedToDeploy": "1.0.0"
   }
 }

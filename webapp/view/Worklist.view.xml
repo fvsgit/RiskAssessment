@@ -13,7 +13,7 @@
 					<ObjectListItem title="{main>Name}" type="Active" press="onPress" number="{main>Score}" numberUnit="{main>ScoreText}"
 						numberState="{= ${main>Score} &lt; 6 ? 'Success' : ${main>Score} &gt; 5 &amp;&amp; ${main>Score} &lt; 13 ? 'Warning' : 'Error' }">
 						<firstStatus>
-							<ObjectStatus text="Signed by manager" state="Success" visible="{= ${main>ManagerSignature} !== '' }" icon="sap-icon://accept"/>
+							<ObjectStatus text="Signed by manager" state="Success" visible="{= ${main>ManagerSignature} !== '' &amp;&amp; ${main>Score} &gt; 17 }" icon="sap-icon://accept"/>
 						</firstStatus>
 						<attributes>
 							<ObjectAttribute text="{main>Description}"/>

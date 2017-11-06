@@ -94,25 +94,29 @@
 				},
 				"async": true
 			},
-			"routes": [{
-				"pattern": "",
-				"name": "worklist",
-				"target": [
-					"worklist"
-				]
-			}, {
-				"pattern": "New/{Id}",
-				"name": "new",
-				"target": [
-					"new"
-				]
-			}, {
-				"pattern": "Employees/{objectId}",
-				"name": "object",
-				"target": [
-					"object"
-				]
-			}],
+			"routes": [
+				{
+					"pattern": "",
+					"name": "worklist",
+					"target": [
+						"worklist"
+					]
+				},
+				{
+					"pattern": "New/{Id}",
+					"name": "new",
+					"target": [
+						"new"
+					]
+				},
+				{
+					"pattern": "Employees/{objectId}",
+					"name": "object",
+					"target": [
+						"object"
+					]
+				}
+			],
 			"targets": {
 				"worklist": {
 					"viewName": "Worklist",
@@ -141,5 +145,9 @@
 				}
 			}
 		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
 	}
 }
