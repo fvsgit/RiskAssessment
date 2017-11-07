@@ -25,6 +25,9 @@ sap.ui.define([
 
 			if (this.validate("addPersonGroup")) {
 
+				//set the trigger in the app model
+				this.getView().getModel("AppModel").setProperty("/Trigger", "ViewInput");
+
 				var oEventBus = sap.ui.getCore().getEventBus();
 				oEventBus.publish("addPerson", "addPersonClosed", this.getView().getModel("NewPersonModel").getData());
 				this._navigateBack();

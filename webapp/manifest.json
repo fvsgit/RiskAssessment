@@ -80,31 +80,36 @@
 				},
 				"async": true
 			},
-			"routes": [{
-				"pattern": "",
-				"name": "worklist",
-				"target": [
-					"worklist"
-				]
-			}, {
-				"pattern": "New/{Id}",
-				"name": "new",
-				"target": [
-					"new"
-				]
-			}, {
-				"pattern": "selectInput",
-				"name": "selectInput",
-				"target": [
-					"selectInput"
-				]
-			}, {
-				"pattern": "addPerson",
-				"name": "addPerson",
-				"target": [
-					"addPerson"
-				]
-			}],
+			"routes": [
+				{
+					"pattern": "",
+					"name": "worklist",
+					"target": [
+						"worklist"
+					]
+				},
+				{
+					"pattern": "New/{Id}",
+					"name": "new",
+					"target": [
+						"new"
+					]
+				},
+				{
+					"pattern": "selectInput",
+					"name": "selectInput",
+					"target": [
+						"selectInput"
+					]
+				},
+				{
+					"pattern": "addPerson",
+					"name": "addPerson",
+					"target": [
+						"addPerson"
+					]
+				}
+			],
 			"targets": {
 				"worklist": {
 					"viewName": "Worklist",
@@ -121,7 +126,7 @@
 					"viewName": "SelectInput",
 					"viewId": "selectInput",
 					"viewLevel": 2
-				}, 
+				},
 				"addPerson": {
 					"viewName": "AddPerson",
 					"viewId": "addPerson",
