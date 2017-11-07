@@ -18,21 +18,16 @@
 				singleContainerFullSize="false">
 				<f:content>
 					<Label text="Likelihood" required="true"/>
-					<HBox>
-						<Input value="{NewModel>/NewEntry/Likelihood}"  enabled="false" fieldGroupIds="mainGroup" required="true" valueStateText="Select the likelihood"></Input>
-						<Button id="btnSelectLikelihood" text="Select" press="onPress_SelectInput"></Button>
-					</HBox>
+					<Button id="btnSelectLikelihood" text="{= ${NewModel>/NewEntry/Likelihood} === '' ? 'Select' : ${NewModel>/NewEntry/Likelihood} }" press="onPress_SelectInput"></Button>
 					<Label text="Consequence" required="true"/>
-					<HBox>
-						<Input value="{NewModel>/NewEntry/Concequence}" enabled="false" fieldGroupIds="mainGroup" required="true" valueStateText="Select the concequence"></Input>
-						<Button id="btnSelectConcequence" text="Select" press="onPress_SelectInput"></Button>
-					</HBox>
+					<Button id="btnSelectConcequence" text="{= ${NewModel>/NewEntry/Concequence} === '' ? 'Select' : ${NewModel>/NewEntry/Concequence} }" press="onPress_SelectInput"></Button>
 					<Label text="Score" required="true" visible="{= ${NewModel>/NewEntry/Score} > 0 }"/>
 					<ObjectStatus class="sapUiSmallMarginBottom" visible="{= ${NewModel>/NewEntry/Score} > 0 }"
 						text="{NewModel>/NewEntry/Score} - {NewModel>/NewEntry/ScoreText}" state="{NewModel>/NewEntry/ScoreState}"
 						icon="{= ${NewModel>/NewEntry/ScoreState} === 'Error' ? 'sap-icon://error' : ${NewModel>/NewEntry/ScoreState} === 'Warning' ? 'sap-icon://message-warning' : 'sap-icon://message-success' }"/>
 					<Label text="Manager Signature" required="true" visible="{= ${NewModel>/NewEntry/Score} >= 18 }"/>
-					<TextArea rows="4" visible="{= ${NewModel>/NewEntry/Score} >= 18 }" value="{NewModel>/NewEntry/ManagerSignature}" fieldGroupIds="mainGroup" required="true" valueStateText="Please add the manager's signature"></TextArea>
+					<TextArea rows="4" visible="{= ${NewModel>/NewEntry/Score} >= 18 }" value="{NewModel>/NewEntry/ManagerSignature}" fieldGroupIds="mainGroup"
+						required="true" valueStateText="Please add the manager's signature"></TextArea>
 				</f:content>
 			</f:SimpleForm>
 			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Involved Parties" labelSpanXL="3" labelSpanL="3" labelSpanM="3"
@@ -40,7 +35,8 @@
 				singleContainerFullSize="false">
 				<f:content>
 					<List id="lstInvolvedParties" mode="Delete" items="{NewModel>/NewEntry/Parties}" delete="onDelete_lstInvolvedParties"
-					customData:validationMethod="minRows" customData:minRows="1" validationSuccess="onListValidationSuccess" validationError="onListValidationError">
+						customData:validationMethod="minRows" customData:minRows="1" validationSuccess="onListValidationSuccess"
+						validationError="onListValidationError">
 						<headerToolbar>
 							<Toolbar>
 								<ToolbarSpacer/>

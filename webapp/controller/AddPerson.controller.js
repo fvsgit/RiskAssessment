@@ -14,7 +14,7 @@ sap.ui.define([
 				"FirstName": "",
 				"LastName": "",
 				"JobTitle": "",
-				"Signature": "sap-icon://signature"
+				"Signature": ""
 			});
 			this.getView().setModel(oModel, "NewPersonModel");
 		},
@@ -34,6 +34,10 @@ sap.ui.define([
 			}
 		},
 		onPress_btnCancel: function() {
+
+			//set the trigger in the app model
+			this.getView().getModel("AppModel").setProperty("/Trigger", "ViewInput");
+
 			this._navigateBack();
 		},
 		_navigateBack: function() {

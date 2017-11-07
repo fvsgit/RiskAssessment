@@ -13,7 +13,7 @@
 					<Label text="Job Title"/>
 					<Input value="{NewPersonModel>/JobTitle}"></Input>
 					<Label text="Signature" required="true"/>
-					<TextArea rows="4" value="" fieldGroupIds="addPersonGroup" required="true" valueStateText="A signature is required"></TextArea>
+					<TextArea rows="4" value="{NewPersonModel>/Signature}" fieldGroupIds="addPersonGroup" required="true" valueStateText="A signature is required"></TextArea>
 				</f:content>
 			</f:SimpleForm>
 		</content>

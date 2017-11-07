@@ -125,12 +125,12 @@
 				"selectInput": {
 					"viewName": "SelectInput",
 					"viewId": "selectInput",
-					"viewLevel": 2
+					"viewLevel": 3
 				},
 				"addPerson": {
 					"viewName": "AddPerson",
 					"viewId": "addPerson",
-					"viewLevel": 2
+					"viewLevel": 3
 				},
 				"objectNotFound": {
 					"viewName": "ObjectNotFound",

@@ -89,7 +89,7 @@ sap.ui.define([
 				sEntity = "Concequence";
 			}
 			this._prepareSelectInput(sEntity);
-			this.getRouter().navTo("selectInput");
+			this.getRouter().navTo("selectInput"); 
 		},
 		_selectInputClosed: function(sChannel, sEvent, oData) {
 
