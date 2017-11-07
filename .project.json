@@ -13,7 +13,7 @@
       "test.html"
     ],
     "buildRequired": true,
-    "lastBuildDateTime": "Sun, 05 Nov 2017 13:36:19 GMT"
+    "lastBuildDateTime": "Mon, 06 Nov 2017 22:11:35 GMT"
   },
   "dataBinding": {
     "/webapp/view/App.view.xml": {
@@ -38,7 +38,7 @@
     {
       "templateId": "ui5template.basicSAPUI5ApplicationComponent",
       "templateVersion": "1.4.0",
-      "dateTimeStamp": "Sat, 04 Nov 2017 13:29:10 GMT"
+      "dateTimeStamp": "Mon, 06 Nov 2017 21:44:22 GMT"
     }
   ],
   "translation": {
@@ -70,6 +70,6 @@
   "hcpdeploy": {
     "account": "s0006519309trial",
     "name": "riskassessment",
-    "lastVersionWeTriedToDeploy": "1.0.0"
+    "lastVersionWeTriedToDeploy": "1.0.2"
   }
 }

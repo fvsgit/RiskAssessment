@@ -19,13 +19,13 @@
 				<f:content>
 					<Label text="Likelihood" required="true"/>
 					<HBox>
-						<Input value="{NewModel>/NewEntry/Likelihood}" enabled="false" fieldGroupIds="mainGroup" required="true" valueStateText="Select the likelihood"></Input>
-						<Button id="btnSelectLikelihood" text="Select" press="onPress_SelectDialog"></Button>
+						<Input value="{NewModel>/NewEntry/Likelihood}"  enabled="false" fieldGroupIds="mainGroup" required="true" valueStateText="Select the likelihood"></Input>
+						<Button id="btnSelectLikelihood" text="Select" press="onPress_SelectInput"></Button>
 					</HBox>
 					<Label text="Consequence" required="true"/>
 					<HBox>
 						<Input value="{NewModel>/NewEntry/Concequence}" enabled="false" fieldGroupIds="mainGroup" required="true" valueStateText="Select the concequence"></Input>
-						<Button id="btnSelectConcequence" text="Select" press="onPress_SelectDialog"></Button>
+						<Button id="btnSelectConcequence" text="Select" press="onPress_SelectInput"></Button>
 					</HBox>
 					<Label text="Score" required="true" visible="{= ${NewModel>/NewEntry/Score} > 0 }"/>
 					<ObjectStatus class="sapUiSmallMarginBottom" visible="{= ${NewModel>/NewEntry/Score} > 0 }"
@@ -44,7 +44,7 @@
 						<headerToolbar>
 							<Toolbar>
 								<ToolbarSpacer/>
-								<Button id="btnAdd" icon="sap-icon://add" press="onPress_SelectDialog" text="Add New"/>
+								<Button id="btnAddPerson" icon="sap-icon://add" press="onPress_btnAddPerson" text="Add New"/>
 							</Toolbar>
 						</headerToolbar>
 						<items>
