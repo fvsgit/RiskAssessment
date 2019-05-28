@@ -23,4 +23,6 @@ steps:
     SonarQube: 'DBAGSonar'
     scannerMode: 'CLI'
     configMode: 'manual'
+    cliProjectKey: 'sap.crm-fvstest2'
+    cliProjectName: 'sap.crm-fvstest2'
     cliSources: '.'
