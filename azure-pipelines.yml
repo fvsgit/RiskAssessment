@@ -17,12 +17,3 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-
-- task: SonarQubePrepare@4
-  inputs:
-    SonarQube: 'DBAGSonar'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'sap.crm-fvstest2'
-    cliProjectName: 'sap.crm-fvstest2'
-    cliSources: '.'
